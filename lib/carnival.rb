@@ -22,4 +22,8 @@ class Carnival
       attendee.interests.include?(ride.name)
     end
   end
+
+  def admit(attendee)
+    @attendees << attendee
+  end 
 end
