@@ -47,6 +47,7 @@ class Carnival
   def draw_lottery_winner(ride)
     if ticket_lottery_contestants(ride) != []
       (ticket_lottery_contestants(ride)).sample
-    end 
+    end
   end
+
 end

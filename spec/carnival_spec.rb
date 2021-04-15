@@ -203,7 +203,7 @@ RSpec.describe Carnival do
   end
 
   context '#announce_lottery_winner' do
-    xit 'can announce_lottery_winner' do
+    it 'can announce_lottery_winner' do
       jeffco_fair = Carnival.new("Jefferson County Fair")
 
       ferris_wheel = Ride.new({name: 'Ferris Wheel', cost: 0})
@@ -229,6 +229,8 @@ RSpec.describe Carnival do
       jeffco_fair.admit(johnny)
 
       jeffco_fair.stub(:draw_lottery_winner).and_return(johnny)
+
+      expect(jeffco_fair.announce_lottery_winner(bumper_cars)).to eq("Johnny has won the Bumper Car lottery!")
     end
   end
 end
