@@ -71,6 +71,7 @@ RSpec.describe Carnival do
       expect(jeffco_fair.recommend_rides(sally)).to eq([scrambler])
     end
   end
+
   context '#admit' do
     it 'can add attendees' do
       jeffco_fair = Carnival.new("Jefferson County Fair")
@@ -81,9 +82,10 @@ RSpec.describe Carnival do
 
       expect(jeffco_fair.attendees).to eq([bob, sally])
     end
-  end 
+  end
+
   context '#attendees_by_ride_interest' do
-    xit 'can return a hash of attendees interested in each ride' do
+    it 'can return a hash of attendees interested in each ride' do
       jeffco_fair = Carnival.new("Jefferson County Fair")
 
       ferris_wheel = Ride.new({name: 'Ferris Wheel', cost: 0})
@@ -108,6 +110,7 @@ RSpec.describe Carnival do
       jeffco_fair.admit(sally)
       jeffco_fair.admit(johnny)
 
+      expect(jeffco_fair.attendees_by_ride_interest).to eq({ferris_wheel => [bob], bumper_cars => [bob, sally, johnny], scrambler => []})
     end
   end
 end
