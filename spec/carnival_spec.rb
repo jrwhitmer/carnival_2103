@@ -170,8 +170,8 @@ RSpec.describe Carnival do
       jeffco_fair.admit(sally)
       jeffco_fair.admit(johnny)
 
-      jeffco_fair.stub(:draw_lottery_winner).and_return(johnny)
-      expect(jeffco_fair.draw_lottery_winner(bumper_cars)).to eq(johnny)
+      #jeffco_fair.stub(:draw_lottery_winner).and_return(johnny)
+      expect(jeffco_fair.draw_lottery_winner(bumper_cars)).to eq(johnny).or eq(bob)
     end
     it 'returns nil when no one is eligible for lottery' do
       jeffco_fair = Carnival.new("Jefferson County Fair")
