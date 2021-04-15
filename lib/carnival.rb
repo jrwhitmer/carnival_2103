@@ -25,5 +25,16 @@ class Carnival
 
   def admit(attendee)
     @attendees << attendee
-  end 
+  end
+
+  def attendees_by_ride_interest
+    attendees_by_ride_interest = {}
+    @rides.each do |ride|
+      matching_attendees = @attendees.find_all do |attendee|
+        attendee.interests.include?(ride.name)
+      end
+        attendees_by_ride_interest[ride] = matching_attendees
+    end
+    attendees_by_ride_interest
+  end
 end
