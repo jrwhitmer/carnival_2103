@@ -230,7 +230,7 @@ RSpec.describe Carnival do
 
       jeffco_fair.stub(:draw_lottery_winner).and_return(johnny)
 
-      expect(jeffco_fair.announce_lottery_winner(bumper_cars)).to eq("Johnny has won the Bumper Car lottery!")
+      expect(jeffco_fair.announce_lottery_winner(bumper_cars)).to eq("Johnny has won the Bumper Cars lottery!")
     end
   end
 end
