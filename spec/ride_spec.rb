@@ -8,6 +8,11 @@ RSpec.describe Ride do
       ride = Ride.new({name: 'Ferris Wheel', cost: 0})
       expect(ride).to be_instance_of(Ride)
     end
+    it 'can return name' do
+      ride = Ride.new({name: 'Ferris Wheel', cost: 0})
+      expect(ride.name).to eq('Ferris Wheel')
+    end
+    
   end
 
 end
