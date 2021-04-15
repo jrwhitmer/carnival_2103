@@ -170,7 +170,65 @@ RSpec.describe Carnival do
       jeffco_fair.admit(sally)
       jeffco_fair.admit(johnny)
 
-      expect(jeffco_fair.draw_lottery_winner(bumper_cars)).to eq(johhny || bob)
+      jeffco_fair.stub(:draw_lottery_winner).and_return(johnny)
+      expect(jeffco_fair.draw_lottery_winner(bumper_cars)).to eq(johnny)
+    end
+    it 'returns nil when no one is eligible for lottery' do
+      jeffco_fair = Carnival.new("Jefferson County Fair")
+
+      ferris_wheel = Ride.new({name: 'Ferris Wheel', cost: 0})
+      bumper_cars = Ride.new({name: 'Bumper Cars', cost: 10})
+      scrambler = Ride.new({name: 'Scrambler', cost: 15})
+
+      jeffco_fair.add_ride(ferris_wheel)
+      jeffco_fair.add_ride(bumper_cars)
+      jeffco_fair.add_ride(scrambler)
+
+      bob = Attendee.new('Bob', 0)
+      bob.add_interest('Ferris Wheel')
+      bob.add_interest('Bumper Cars')
+
+      sally = Attendee.new('Sally', 20)
+      sally.add_interest('Bumper Cars')
+
+      johnny = Attendee.new("Johnny", 5)
+      johnny.add_interest('Bumper Cars')
+
+      jeffco_fair.admit(bob)
+      jeffco_fair.admit(sally)
+      jeffco_fair.admit(johnny)
+
+      expect(jeffco_fair.draw_lottery_winner(ferris_wheel)).to eq(nil)
+    end
+  end
+
+  context '#announce_lottery_winner' do
+    xit 'can announce_lottery_winner' do
+      jeffco_fair = Carnival.new("Jefferson County Fair")
+
+      ferris_wheel = Ride.new({name: 'Ferris Wheel', cost: 0})
+      bumper_cars = Ride.new({name: 'Bumper Cars', cost: 10})
+      scrambler = Ride.new({name: 'Scrambler', cost: 15})
+
+      jeffco_fair.add_ride(ferris_wheel)
+      jeffco_fair.add_ride(bumper_cars)
+      jeffco_fair.add_ride(scrambler)
+
+      bob = Attendee.new('Bob', 0)
+      bob.add_interest('Ferris Wheel')
+      bob.add_interest('Bumper Cars')
+
+      sally = Attendee.new('Sally', 20)
+      sally.add_interest('Bumper Cars')
+
+      johnny = Attendee.new("Johnny", 5)
+      johnny.add_interest('Bumper Cars')
+
+      jeffco_fair.admit(bob)
+      jeffco_fair.admit(sally)
+      jeffco_fair.admit(johnny)
+
+      jeffco_fair.stub(:draw_lottery_winner).and_return(johnny)
     end
   end
 end

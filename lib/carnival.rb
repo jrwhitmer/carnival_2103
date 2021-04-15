@@ -42,5 +42,11 @@ class Carnival
     @attendees.find_all do |attendee|
       attendee.spending_money < ride.cost
     end
-  end 
+  end
+
+  def draw_lottery_winner(ride)
+    if ticket_lottery_contestants(ride) != []
+      (ticket_lottery_contestants(ride)).sample
+    end 
+  end
 end
