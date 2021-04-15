@@ -4,11 +4,13 @@ require './lib/ride'
 class Carnival
 
   attr_reader :name,
-              :rides
+              :rides,
+              :attendees
 
   def initialize(name)
     @name = name
     @rides = []
+    @attendees = []
   end
 
   def add_ride(ride)
