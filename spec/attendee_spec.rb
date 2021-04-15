@@ -12,5 +12,9 @@ RSpec.describe Attendee do
       attendee = Attendee.new('Bob', 20)
       expect(attendee.name).to eq('Bob')
     end
+    it 'can return spending money' do
+      attendee = Attendee.new('Bob', 20)
+      expect(attendee.spending_money).to eq(20)
+    end
   end
 end
