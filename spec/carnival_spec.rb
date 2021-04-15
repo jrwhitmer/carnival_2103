@@ -232,5 +232,34 @@ RSpec.describe Carnival do
 
       expect(jeffco_fair.announce_lottery_winner(bumper_cars)).to eq("Johnny has won the Bumper Cars lottery!")
     end
+    it 'can say if there is no winner for a lottery' do
+      jeffco_fair = Carnival.new("Jefferson County Fair")
+
+      ferris_wheel = Ride.new({name: 'Ferris Wheel', cost: 0})
+      bumper_cars = Ride.new({name: 'Bumper Cars', cost: 10})
+      scrambler = Ride.new({name: 'Scrambler', cost: 15})
+
+      jeffco_fair.add_ride(ferris_wheel)
+      jeffco_fair.add_ride(bumper_cars)
+      jeffco_fair.add_ride(scrambler)
+
+      bob = Attendee.new('Bob', 0)
+      bob.add_interest('Ferris Wheel')
+      bob.add_interest('Bumper Cars')
+
+      sally = Attendee.new('Sally', 20)
+      sally.add_interest('Bumper Cars')
+
+      johnny = Attendee.new("Johnny", 5)
+      johnny.add_interest('Bumper Cars')
+
+      jeffco_fair.admit(bob)
+      jeffco_fair.admit(sally)
+      jeffco_fair.admit(johnny)
+
+      jeffco_fair.draw_lottery_winner(ferris_wheel)
+
+      expect(jeffco_fair.announce_lottery_winner(ferris_wheel)).to eq("No winners for this lottery.")
+    end 
   end
 end
