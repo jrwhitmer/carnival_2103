@@ -1,3 +1,6 @@
+require './lib/attendee'
+require './lib/ride'
+
 class Carnival
 
   attr_reader :name,
@@ -9,6 +12,12 @@ class Carnival
   end
 
   def add_ride(ride)
-    @rides << ride 
+    @rides << ride
+  end
+
+  def recommend_rides(attendee)
+    @rides.find_all do |ride|
+      attendee.interests.include?(ride.name)
+    end
   end
 end

@@ -43,7 +43,7 @@ RSpec.describe Carnival do
     end
   end
 
-  context '#recomend_rides' do
+  context '#recommend_rides' do
     it 'can recommend rides by attendee' do
       jeffco_fair = Carnival.new("Jefferson County Fair")
 
